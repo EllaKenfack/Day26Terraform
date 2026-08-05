@@ -1,0 +1,6 @@
+rgname                 = "dev-ella-rg"
+service_principal_name = "dev-ella-spn"
+keyvault_name          = "dev-ella-kv-101"
+SUB_ID = "f229c625-10aa-43e8-87b6-4d254497b238"
+cluster_name = "dev-ella-cluster"
+node_pool_name = "devnp"

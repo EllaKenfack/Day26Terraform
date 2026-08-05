@@ -85,7 +85,7 @@ jobs:
     needs: validate
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    environment: test
+    environment: staging
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -96,7 +96,7 @@ jobs:
           terraform_version: ${{ env.TERRAFORM_VERSION }}
 
       - name: Terraform Init (Test)
-        working-directory: terraform/test
+        working-directory: terraform/staging
         env:
           ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
           ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
@@ -110,7 +110,7 @@ jobs:
             -backend-config="key=test.terraform.tfstate"
 
       - name: Terraform Apply (Test)
-        working-directory: terraform/test
+        working-directory: terraform/statging
         env:
           ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
           ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
